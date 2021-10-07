@@ -1,0 +1,78 @@
+body {
+  z-index: 0;
+  overflow-x: hidden;
+}
+body .page-container {
+  min-height: 100vh;
+}
+body .page-container .body-container {
+  background-color: #eee;
+  margin-top: 60px;
+}
+body .page-container .body-container .normal-container {
+  height: 100%;
+  margin: 15px 0;
+}
+body .page-container .body-container .normal-container .main-container {
+  display: flex;
+}
+body .page-container .body-container .normal-container .main-container .contents {
+  width: 500px;
+  background-color: #fff;
+}
+body .page-container .body-container .normal-container .main-container .function-nav {
+  width: 250px;
+  margin-left: 15px;
+  background-color: #fff;
+}
+body .page-container .body-container .normal-container .sub-container {
+  width: 250px;
+  margin-right: 15px;
+}
+body .page-container .body-container .normal-container .sub-container .top-nav-container {
+  background-color: #fff;
+}
+body .page-container .body-container .normal-container .sub-container {
+  margin-top: 15px;
+  background-color: #fff;
+}
+
+.header {
+  background-color: #25f4bc;
+  position: fixed;
+  z-index: 1;
+  width: 101vw;
+  height: 60px;
+}
+.header .main-ctrl {
+  display: flex;
+  justify-content: center;
+}
+.header .main-ctrl form {
+  margin: auto 0;
+  width: 100%;
+}
+.header .main-ctrl form input {
+  width: 450px;
+  height: 38px;
+  font-size: 16px;
+  margin: auto;
+}
+.header .sub-nav {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.header .sub-nav .item {
+  color: #777;
+  text-decoration: none;
+  font-size: 26px;
+  margin: auto 0;
+}
+.header .sub-nav .item:hover {
+  color: #ddd;
+}
+.header .sub-nav .item + .item {
+  margin-right: 10px;
+}
+
+/*# sourceMappingURL=header.css.map */

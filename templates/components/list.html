@@ -1,0 +1,9 @@
+<div>
+    {% if not items %}
+        チームは見つかりませんでした
+    {% else %}
+        {% for item in items %}
+            {% include 'components/link.html' with type=link_type url_name=url_name content=item kwargs=kwargs only %}
+        {% endfor %}
+    {% endif %}
+</div>

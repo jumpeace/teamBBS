@@ -1,0 +1,39 @@
+{% extends 'page/base.html' %}
+{% load static %}
+
+{% block page %}
+
+<!-- Header -->
+
+<div class="header row">
+    {% include 'components/title.html' %}
+    <div class="main-ctrl col-6">
+    </div>
+    {% include 'components/sub_nav.html' with user_status='both' is_user_auth=is_user_auth only %}
+</div>
+
+<!-- Body -->
+
+<div class="body-container flex-grow-1">
+    <div class="normal-container d-flex justify-content-center">
+        <div class="sub-container">
+            {% include 'components/top_nav.html' with current='team' only %}
+        </div>
+        <div class="main-container">
+            <div class="contents">
+                <div>
+                    {% if not team_list %}
+                        チームは見つかりませんでした
+                    {% else %}
+                        {% for team in team_list %}
+                            <div><a href="{% url 'team:detail' team_id=team.id %}">{{team.name}}</a></div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            {% include 'components/function_nav_link.html' with type=props.body.bodyer.function_nav.type links=props.body.bodyer.function_nav.links kwargs=kwargs %}
+        </div>
+    </div>
+</div>
+
+{% endblock page %}

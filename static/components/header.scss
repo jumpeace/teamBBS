@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@import "./page.scss";
+
+.header {
+    background-color: hsl($primary-hue, 90%, 55%);
+    position: fixed;
+    z-index: 1;
+    width: 101vw;
+    height: $header-height-lg;
+    .main-ctrl {
+        display: flex;
+        justify-content: center;
+        form {
+            margin: auto 0;
+            width: 100%;
+            input {
+                width: 450px;
+                height: 38px;
+                font-size: 16px;
+                margin: auto;
+            }
+        }
+    }
+    .sub-nav {
+        display: flex;
+        flex-direction: row-reverse;
+        .item {
+            color: #777;
+            text-decoration: none;
+            font-size: 26px;
+            margin: auto 0;
+            &:hover {
+                color: #ddd;
+            }
+        }
+        .item + .item {
+            margin-right: 10px;
+        }
+    }
+}

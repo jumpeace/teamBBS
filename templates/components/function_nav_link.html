@@ -1,0 +1,31 @@
+<div class="function-nav" >
+    {% if type == 'normal' %}
+        {% for link in links %}
+            <div>
+                {% include 'components/link.html' with type=link.type url_name=link.url_name content=link.content kwargs=kwargs only %}
+            </div>
+        {% endfor %}
+
+    {% elif type == 'owner_judge' %}
+        {% for link in links.normal %}
+            <div>
+                {% include 'components/link.html' with type=link.type url_name=link.url_name content=link.content kwargs=kwargs only %}
+            </div>
+        {% endfor %}
+
+        {% if is_owner %}
+            {% for link in links.owner %}
+                <div>
+                    {% include 'components/link.html' with type=link.type url_name=link.url_name content=link.content kwargs=kwargs only %}
+                </div>
+            {% endfor %}
+
+        {% else %}
+            {% for link in links.not_owner %}
+                <div>
+                    {% include 'components/link.html' with type=link.type url_name=link.url_name content=link.content kwargs=kwargs only %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+</div>

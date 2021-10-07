@@ -1,0 +1,60 @@
+{% extends 'page/base.html' %}
+{% load static %}
+
+{% block page %}
+
+<!-- Header -->
+
+<div class="header row">
+    {% include 'components/title.html' %}
+    <div class="main-ctrl col-6">
+    </div>
+    {% include 'components/sub_nav.html' with user_status='login' only %}
+</div>
+
+<!-- Body -->
+
+<div class="body-container flex-grow-1">
+    <div class="normal-container d-flex justify-content-center">
+        <div class="sub-container">
+            {% include 'components/top_nav.html' with current='team' only %}
+        </div>
+        <div class="main-container">
+            <div class="contents">
+                <div id="create_display">
+                    <form method="POST" action="{% url 'team:role:user_create' team_id=kwargs.team_id role_id=kwargs.role_id %}"> 
+                        {% csrf_token %}
+                        <select name="new_user" data-invalid_val="invalid">
+                            <option value="invalid">役職にユーザーを追加</option>
+                            {% for team_user in team_user_list %}
+                                <option value="{{team_user.user.id}}">{{team_user.user}}</option>
+                            {% endfor %}
+                        </select>
+                        <button>追加</button>
+                    </form>
+                </div>
+                <div id="delete_display">
+                    {% if not role_user_list %}
+                        <div id="http404">役職を持つユーザーはいません</div>
+                    {% else %}
+                        <form method="POST" action="{% url 'team:role:user_delete' team_id=kwargs.team_id role_id=kwargs.role_id %}">
+                            {% csrf_token %}
+                            <div id="list_display">
+                                {% for role_user in role_user_list %}
+                                    <div><input type="checkbox" name="delete_pk" class="delete_pk" value="{{role_user.id}}"></input>{{role_user.user}}</div>
+                                {% endfor %}
+                            </div>
+                            <button>削除</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% include 'components/function_nav_link.html' with type=props.body.bodyer.function_nav.type links=props.body.bodyer.function_nav.links kwargs=kwargs %}
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'ajax/init.js' %}"></script>
+<script src="{% static 'ajax/role/user/list.js' %}"></script>
+
+{% endblock page %}

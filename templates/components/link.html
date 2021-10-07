@@ -1,0 +1,7 @@
+{% if type == 'normal' %}
+    <a href="{% url url_name %}">{{content}}</a>
+{% elif type == 'team' %}
+    <a href="{% url url_name pk=kwargs.team_id %}">{{content}}</a>
+{% elif type == 'team-channel' %}
+    <a href="{% url url_name pk=kwargs.team_id channel_id=kwargs.channel_id %}">{{content}}</a>
+{% endif %}

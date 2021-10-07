@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+@import "./page.scss";
+
+.footer {
+    height: $footer-height-lg;
+    line-height: $footer-height-lg;
+    background-color: #bbb;
+}

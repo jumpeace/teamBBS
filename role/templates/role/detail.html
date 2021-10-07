@@ -1,0 +1,57 @@
+{% extends 'page/base.html' %}
+{% load static %}
+
+{% block page %}
+
+<link rel="stylesheet" href="{% static 'post/search.css' %}">
+
+<!-- Header -->
+
+<div class="header row">
+    {% include 'components/title.html' %}
+    <div class="main-ctrl col-6">
+    </div>
+    {% include 'components/sub_nav.html' with user_status='login' only %}
+</div>
+
+<!-- Body -->
+
+<div class="body-container flex-grow-1">
+    <div class="normal-container d-flex justify-content-center">
+        <div class="sub-container">
+            {% include 'components/top_nav.html' with current='team' only %}
+        </div>
+        <div class="main-container">
+            <div class="contents">
+                {% if not object %}
+                    <div>役職が存在しません</div>
+                {% else %}
+                    <div id='detail_display'>
+                        役職: <span id="role_name">{{object.name}}</span>
+                        <button id="display_to_update_btn">編集</button>
+                    </div>
+
+                    <div id='update_display' hidden>
+                        <form method="POST" action="{% url 'team:role:update' team_id=kwargs.team_id role_id=kwargs.role_id %}">
+                            {% csrf_token %}
+                            <input type="text" name="new_name" value="{{object.name}}" />
+                            <button>更新</button>
+                        </form>
+                    </div>
+                    <div id="delete_display">
+                        <form method="POST" action="{% url 'team:role:delete' team_id=kwargs.team_id role_id=kwargs.role_id %}">
+                            {% csrf_token %}
+                            <button>削除</button>
+                        </form>
+                        </div>
+                {% endif %}
+            </div>
+            {% include 'components/function_nav_link.html' with type=bodyer.function_nav.type links=props.body.bodyer.function_nav.links kwargs=kwargs is_owner=is_owner %}
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'ajax/init.js' %}"></script>
+<script src="{% static 'ajax/role/detail.js' %}"></script>
+
+{% endblock page %}

@@ -1,0 +1,19 @@
+<div class="top-nav-container">
+    <div class="top-nav d-flex flex-md-column">
+        <a
+            class={% if current == 'home' %}"item current"{% else %}"item"{% endif %}
+            href="{% url 'index' %}"
+        >
+            <span class="material-icons icon">home</span>
+            <span>ホーム</span>
+        </a>
+
+        <a
+            class={% if current == 'team' %}"item current"{% else %}"item"{% endif %}
+            href="{% url 'team:list' %}"
+        >
+            <span class="material-icons icon">group</span>
+            <span>チーム</span>
+        </a>
+    </div>
+</div>

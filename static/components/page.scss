@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+$primary-hue: 164;
+$header-height-lg: 60px;
+$footer-height-lg: 50px;
+
+body {
+    z-index: 0;
+    overflow-x: hidden;
+
+    .page-container {
+        min-height: 100vh;
+        .body-container {
+            background-color: #eee;
+            margin-top: 60px;
+            .normal-container {
+                height: 100%;
+                margin: 15px 0;
+                .main-container {
+                    display: flex;
+                    .contents {
+                        width: 500px;
+                        background-color: #fff;
+                    }
+                    .function-nav {
+                        width: 250px;
+                        margin-left: 15px;
+                        background-color: #fff;
+                    }
+                }
+                .sub-container {
+                    width: 250px;
+                    margin-right: 15px;
+                    .top-nav-container {
+                        background-color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

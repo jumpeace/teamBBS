@@ -1,0 +1,29 @@
+.top-nav {
+  border: 1px solid #ccc;
+}
+.top-nav .item {
+  padding: 8px 40px;
+  color: #777;
+  display: flex;
+  cursor: pointer;
+}
+.top-nav .item.current {
+  color: #333;
+}
+.top-nav .item .icon {
+  margin-right: 5px;
+  padding-top: auto;
+  padding-bottom: auto;
+}
+.top-nav .item:hover {
+  background-color: #ddd;
+  text-decoration: none;
+}
+.top-nav .item + .item {
+  border-top: 1px solid #ddd;
+}
+.top-nav .item.current .icon {
+  color: #333;
+}
+
+/*# sourceMappingURL=top_nav.css.map */

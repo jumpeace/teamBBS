@@ -1,0 +1,28 @@
+.top-nav {
+    border: 1px solid #ccc;
+    .item {
+        padding: 8px 40px;
+        color: #777;
+        display: flex;
+        cursor: pointer;
+
+        &.current {
+            color: #333;
+        }
+        .icon {
+            margin-right: 5px;
+            padding-top: auto;
+            padding-bottom: auto;
+        }
+        &:hover {
+            background-color: #ddd;
+            text-decoration: none;
+        }
+    }
+    .item + .item {
+        border-top: 1px solid #ddd;
+    }
+    .item.current .icon {
+        color: #333;
+    }
+}

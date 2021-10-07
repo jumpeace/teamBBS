@@ -1,0 +1,27 @@
+<div class="sub-nav col-3">
+    {% if user_status == 'both' %}
+        {% if is_user_auth %}
+            <a class="item material-icons" href="#">help</a>
+            <a class="item material-icons" href="#">settings</a>
+            <a class="item material-icons" href="{% url 'user:delete' %}">person_remove</a>
+            <a class="item material-icons" href="{% url 'user:logout' %}">logout</a>
+            <a class="item material-icons" href="#">notifications</a>
+            <a class="item material-icons" href="#">person</a>
+        {% else %}
+            <a class="item material-icons" href="{% url 'user:login' %}">login</a>
+            <a class="item material-icons" href="{% url 'user:register' %}">person_add</a>
+        {% endif %}
+
+    {% elif user_status == 'login' %}
+        <a class="item material-icons" href="#">help</a>
+        <a class="item material-icons" href="#">settings</a>
+        <a class="item material-icons" href="{% url 'user:logout' %}">logout</a>
+        <a class="item material-icons" href="#">notifications</a>
+        <a class="item material-icons" href="#">person</a>
+
+    {% elif user_status == 'logout' %}
+        <a class="item material-icons" href="{% url 'user:login' %}">login</a>
+        <a class="item material-icons" href="{% url 'user:register' %}">person_add</a>
+
+    {% endif %}
+</div>
